@@ -8,7 +8,7 @@ const app = express()
 
 // provem os arquivos staticos na mesma pasta que o arquivo
 app.use(express.static('.')) 
-app.use('/teste', bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 const multer = require('multer')
@@ -33,6 +33,13 @@ app.post('/upload', (req, res) => {
         }
 
         res.end('Concluido com sucesso.')
+    })
+})
+
+app.post('/formulario', (req, res) =>{
+    res.send({
+        ...req.body,
+        id:1
     })
 })
 
